@@ -11,7 +11,7 @@
 	String name = null;
 	for(Notebook notebook: notebooks){
 %>
-  <option><%= notebook.getName();%></option>
+  <option><%= notebook.getName()%></option>
 <%
 	}
 %>
