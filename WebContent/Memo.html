@@ -5,19 +5,20 @@
 		<title>Memo</title>
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="Memo.css">
-		<link rel="stylesheet" type="text/css" href="Menue.css">
+		<link rel="stylesheet" type="text/css" href="menue.css">
 		<script type="text/javascript">
 			
 		function validatelogin(){
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("GET","LoginServlet?username="+ document.LoginForm.username.value
-						+ "&password="+ document.LoginForm.password.value,false);
+						+ "&password="+ document.LoginForm.password.value, false);
 				xhttp.send();
 				if(xhttp.responseText.trim().length > 0){
-					document.getElemetById("LoginError").innerHTML = xhttp.responseText;
+					console.log(xhttp.responseText);
+					document.getElementById("LoginError").innerHTML = xhttp.responseText;
 					return false;
 				}
-				return false;
+				return true;
 			}
 		</script>
 	</head>
