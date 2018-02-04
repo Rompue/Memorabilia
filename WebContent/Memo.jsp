@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="UTF-8">
-		<title>Memo</title>
-		<link rel="stylesheet" type="text/css" href="Memo.css">
-	</head>
-	<body>
-		<div id="sidemenue">
-		
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="Memo.css">
+<title>Memo</title>
+</head>
+<body>
+	<div id="sidemenue">
 		</div> 
 		<div id="mainsite">
 			<div id="motto">
@@ -17,10 +18,6 @@
 				<h1>motto</h1>
 				%
 			</div>
-			<div>
-				Now
-			</div>	
-			
 		</div>
 		<div id="login">
 			<ul>
@@ -41,7 +38,6 @@
 				<li><div class="signup"> Sign up</div></li>
 			</ul>
 		</div>
-
-
-	</body>
+	
+</body>
 </html>
