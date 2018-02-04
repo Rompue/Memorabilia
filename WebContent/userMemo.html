@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>Memo</title>
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="Memo.css">
+		<link rel="stylesheet" type="text/css" href="menue.css">
+		<script type="text/javascript">
+			
+		function validatelogin(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST","LoginServlet?username="+ document.LoginForm.username.value
+						+ "&password="+ document.LoginForm.password.value, false);
+				xhttp.send();
+				if(xhttp.responseText.trim().length > 0){
+					document.getElementById("LoginError").innerHTML = xhttp.responseText;
+					return false;
+				}
+				return true;
+			}
+		</script>
+		<style type="text/css">
+		#container{
+			height: 3000px;
+		}
+			#sidemenue{
+				text-align: center;
+			}
+			#random{
+				margin-top: 350px;
+				position: fixed;
+			}
+			#similiar{
+				margin-top: 100px;
+				position: fixed;
+			}
+			#random input{
+				border:none;
+				background:transparent;
+				width: 200px;
+				height: 80px;
+				font-size: 50px;
+				font-family: 'Indie Flower', cursive;
+			}
+			#similiar input{
+				border:none;
+				background:transparent;
+				width: 200px;
+				height: 80px;
+				font-size: 50px;
+				font-family: 'Indie Flower', cursive;
+			}
+			#random input:hover{
+				font-size: 55px;
+			}
+			#similiar input:hover{
+				font-size: 55px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+		<div id="sidemenue">
+			<div id="random"><input type="button" name="random" value="Random"></div>
+			<div id="similiar"><input type="button" name="similiar" value="similiar"></div>
+		</div> 
+		<div id="mainsite">
+			<div id="top">
+				<div id="login">
+					<form action="UserServlet" method="POST" name="LoginForm" onsubmit="return validatelogin();">
+			<ul>
+				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
+			</ul>
+		</form>
+		</div>
+			</div>
+			<div id="motto">
+				String motto
+				getAttribute(motto);
+				<h1>motto</h1>
+			</div>
+			<div  id="Now">
+				<p style="margin-bottom: 30px;">Now</p>
+			</div>
+			<div class="dairyblock">
+				<div class="reply">Reply</div>
+			</div>	
+			
+		</div>
+		</div>
+
+
+	</body>
+</html>
