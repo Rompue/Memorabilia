@@ -29,5 +29,9 @@ public class MException extends Exception {
  * 5, "Incorrect password for " + email
  * 6, "No user with email " + email + " exists"
  * 7, "No user with id " + id + " exists"
+ * 8, "Notebook name cannot be empty."
+ * 9, "Notebook createDate cannot be empty."
+ * 10, "Notebook expireDate cannot be empty."
+ * 11, "Notebook must belong to a user."
  * 
  */

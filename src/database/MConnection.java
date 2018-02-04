@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -165,6 +166,7 @@ public class MConnection {
 		return null;
 	}
 	
+	
 	public static User pullUserInfoByID(int id) throws MException {
 		
 		// Retrieve user's basic info and create the user first
@@ -204,7 +206,7 @@ public class MConnection {
 		
 		if (user != null) {
 			try {
-				preparedStatement = connection.prepareStatement("SELECT * FROM Notebook WHERE idUesr=?;");
+				preparedStatement = connection.prepareStatement("SELECT * FROM Notebook WHERE User_idUesr=?;");
 				preparedStatement.setInt(1, user.getIdUser());
 				resultSet = preparedStatement.executeQuery();
 				
@@ -220,7 +222,7 @@ public class MConnection {
 						
 						// retrieve diaries and add into the current notebook
 						try {
-							PreparedStatement diaryPS = connection.prepareStatement("SELECT * FROM Diary WHERE idNotebook=?;");
+							PreparedStatement diaryPS = connection.prepareStatement("SELECT * FROM Diary WHERE Notebook_idNotebook=?;");
 							diaryPS.setInt(1, idNotebook);
 							ResultSet diaryRS = diaryPS.executeQuery();
 							
@@ -232,7 +234,7 @@ public class MConnection {
 								Diary diary = new Diary(idDiary, content, createTime, notebook, idNotebook);
 								
 								
-								PreparedStatement commentPS = connection.prepareStatement("SELECT * FROM Comment WHERE idDiary=?;");
+								PreparedStatement commentPS = connection.prepareStatement("SELECT * FROM Comment WHERE Diary_idDiary=?;");
 								commentPS.setInt(1, idDiary);
 								ResultSet commentRS = commentPS.executeQuery();
 								
@@ -268,7 +270,58 @@ public class MConnection {
 		return null;
 	}
 	
-	public static User fillCurrentUser() {
+	public static User fillCurrentUser(User user) throws MException {
+		return pullUserInfoByID(user.getIdUser());
+	}
+	
+	
+	public static Notebook createNotebook(Notebook notebook) {
+		
+		
+		
+		
+		return null;
+	}
+	
+	public static Notebook createNotebook(String name, Date createDate, Date expireDate,
+										boolean isPublic, User user) throws MException {
+		// check null
+		if (name == null || name.trim().equals("")) throw new MException(8, "Notebook name cannot be empty.");
+		if (createDate == null) throw new MException(9, "Notebook createDate cannot be empty.");
+		if (expireDate == null) throw new MException(10, "Notebook expireDate cannot be empty.");
+		if (user == null) throw new MException(11, "Notebook must belong to a user.");
+		
+		
+		// TODO: check duplicate by user and name(notebook name)
+		
+		
+		// create new notebook if not exist
+		try {
+			
+			preparedStatement = connection.prepareStatement("INSERT INTO Notebook (name, createDate, expireDate, isPublic, User_idUser) VALUES (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, name);
+			preparedStatement.setObject(2, createDate.toInstant().atZone(ZoneId.of("America/Los_Angeles")).toLocalDate());
+			preparedStatement.setObject(3, expireDate.toInstant().atZone(ZoneId.of("America/Los_Angeles")).toLocalDate());
+			preparedStatement.setBoolean(4, isPublic);
+			preparedStatement.setInt(5, user.getIdUser());
+			preparedStatement.executeUpdate();
+			resultSet = preparedStatement.getGeneratedKeys();
+			if (resultSet.next()) {
+				int idNotebook = resultSet.getInt(1);
+				
+				Notebook newNotebook = new Notebook(idNotebook, name, createDate, expireDate, isPublic, user, user.getIdUser());
+			}
+		} catch (SQLException sqle) {
+			System.out.println("sqle: " + sqle.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (SQLException sqle) {
+				System.out.println("sqle closing stuff: " + sqle.getMessage());
+			}
+		}
+		
 		return null;
 	}
 	
