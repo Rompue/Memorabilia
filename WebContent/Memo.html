@@ -13,14 +13,15 @@
 			}
 			#login{
  				float:right;
- 				width: 400px;
- 				height: 70px;
+ 				width: 380px;
+ 				height: 60px;
  				border-bottom: 5px solid black;
- 				font-size: 20px;
- 				line-height: 40px;
+ 				padding-right: 20px;
  	 			}
  	 		#login ul{
  	 			list-style: none;
+ 	 			margin: 0;
+ 	 			padding: 0;
  	 		}
  	 		#login li{
  	 			float: left;
@@ -28,16 +29,33 @@
  	 		#login ul ul{
  	 			visibility: hidden;
  	 			position: absolute;
+ 	 			text-align: center;
  	 		}
  	 		#login ul li ul li{
- 	 			width: 40px;
+ 	 			width: 160px;
+ 	 			line-height: 20px;
+ 	 			text-align: center;
+ 	 			border-left: 2px solid black;
+ 	 			border-right: 2px solid black;
  	 		}
  	 		#login ul li:hover li{
  	 			visibility: visible;
  	 		}
+ 	 		#login ul ul li{
+ 	 			float: none;
+
+ 	 		}
+ 	 		#login li{
+ 	 			display: block;
+ 	 			font-size: 20px;
+ 				line-height: 40px;
+
+ 	 		}
  	 		.signup{
  	 			width: 120px;
+ 	 			height: 60px;
  	 			text-align: center;
+ 	 			line-height: 60px;
  	 		}
  	 		.signup:hover{
  	 			background-color: green;
@@ -46,13 +64,18 @@
  	 			border-radius: 100%;
  	 			border: 3px solid black;
  	 			margin-right: 30px;
- 	 			margin-left: 10px;
+ 	 			margin-left: 30px;
+ 	 			margin-top: 5px;
  	 			}
- 	 		#loginmenue{
- 	 				width: 400px;
- 	 				height: 500px;
- 	 				border: 5px solid black;
- 	 			}
+ 	 		#loginbotton{
+ 	 			width: 80px; 
+ 	 			height: 25px; 
+ 	 			font-size: 15px; 
+ 	 			border-radius: 30%;
+ 	 			background-color: yellow;
+ 	 			border: 3px solid black;
+ 	 			line-height: 15px;
+ 	 		}
 		</style>
 	</head>
 	<body>
@@ -64,11 +87,15 @@
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
 					<ul>
-						<div id="loginmenue">
-						<li>user<input style="width: 40px;" type="text" name="username"></li>
-						<li>pas<input style="width: 40px;" type="text" name="password"></li>
-						<li><input type="submit" name="submit" value="login"></li>
-						</div>
+						<li><br></li>
+						<li>username:</li>
+						<li><input style="width: 80px;" type="text" name="username"></li>
+						<li><br></li>
+						<li>password:</li>
+						<li><input style="width: 80px;" type="text" name="password"></li>
+						<li><br></li>
+						<li><input id="loginbotton" type="submit" name="submit" value="login"></li>
+						<li><div style="border-bottom: 2px solid black"><br></div></li>
 					</ul>
 				</li>
 				<li><div class="signup"> Sign up</div></li>
