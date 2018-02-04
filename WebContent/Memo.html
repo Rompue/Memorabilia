@@ -10,15 +10,19 @@
 			
 		function validatelogin(){
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("GET","LoginServlet?username="+ document.LoginForm.username.value
+	            xhttp.onreadystatechange = function() {
+	            	if (this.readyState == 4 && this.status == 200) {
+	            		if(xhttp.responseText.trim().length > 0){
+	    					console.log(xhttp.responseText);
+	    					document.getElementById("LoginError").innerHTML = xhttp.responseText;
+	    					return false;
+	    				}
+	            		return true;
+	            	}
+	            }
+	            xhttp.open("GET","LoginServlet?username="+ document.LoginForm.username.value
 						+ "&password="+ document.LoginForm.password.value, false);
 				xhttp.send();
-				if(xhttp.responseText.trim().length > 0){
-					console.log(xhttp.responseText);
-					document.getElementById("LoginError").innerHTML = xhttp.responseText;
-					return false;
-				}
-				return true;
 			}
 		</script>
 	</head>
