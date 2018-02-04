@@ -37,6 +37,10 @@ public class DatabaseTest {
 			MConnection.pullUserInfoByID(kun.getIdUser());
 			System.out.println();
 			
+			for(Notebook notebook : kun.getNotebooks()) {
+				
+			}
+			
 		} catch (MException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();

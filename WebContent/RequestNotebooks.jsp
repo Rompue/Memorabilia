@@ -10,7 +10,8 @@
 	List<Notebook> notebooks = user.getNotebooks();
 	String name = null;
 	for(Notebook notebook: notebooks){
-		name = notebook.getName();
+%>
+  <option><%= notebook.getName();%></option>
+<%
 	}
 %>
-	<option><%= name %></option>
