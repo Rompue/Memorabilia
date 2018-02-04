@@ -6,16 +6,19 @@
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="Memo.css">
 		<link rel="stylesheet" type="text/css" href="menue.css">
-		<script type="text/javascript">
-			
+		<script type="text/javascript">			
+		
 		function validatelogin(){
-			var xhttp = new XMLHttpRequest();
-			xhttp.open("post", "authenticate.jsp?username=" + document.loginform.username.value + "&password=" + document.loginform.password.value, false);
-			xhttp.send();
-			if(xhttp.responseText.trim().length > 0){
-				return false;
-			}
-			return true;
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET","LoginServlet?username="+ document.LoginForm.username.value
+						+ "&password="+ document.LoginForm.password.value, false);
+				xhttp.send();
+				if(xhttp.responseText.trim().length > 0){
+					//console.log(xhttp.responseText);
+					document.getElementById("LoginError").innerHTML = xhttp.responseText;
+					return false;
+				}
+				return true;
 			}
 		</script>
 	</head>
@@ -27,7 +30,7 @@
 		<div id="mainsite">
 			<div id="top">
 				<div id="login">
-					<form action="LoginServlet" method="POST" name="loginform" onsubmit="return validate()">
+					<form action="UserServlet" method="POST" name="LoginForm" onsubmit="return validatelogin();">
 			<ul>
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
