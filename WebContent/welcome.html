@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>Memo</title>
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<style type="text/css">
+			body {
+				background-image: url(https://picsum.photos/2000/1000/?blur);
+			}
+
+			#today{
+				margin-left: 140px;
+				font-size: 50px;
+				font-family:  'Indie Flower', cursive;
+				text-indent: 7em;
+				background:;
+			}
+			#todaypic{
+				text-align: center;
+				margin-top: 150px;
+				margin-bottom: 100px;
+				
+			}
+			#todaypic img{
+				border-radius: 100%;
+				border:5px solid black;
+			}
+			#todaypic img:hover{
+				width: 150px;
+				height: 150px;
+			}
+			#gotohome{
+				text-align: center;
+				line-height: 180px;
+			}
+			#gotobutton{
+				border:none;
+				width: 500px;
+				height: 100px;
+				font-size: 40px;
+				background:transparent;
+				font-family:  'Indie Flower', cursive;
+			}
+			#gotobutton:hover{
+				font-size: 60px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+		<div id="todaypic"><img id="userpic" src="https://picsum.photos/100/100"></div>
+		<form>
+			<textarea id="today" rows="1" cols="50" name="todaydiary">How Are you today?</textarea><br>
+			<div id="gotohome"><input id="gotobutton" type="button" name="submit" value="Start your Day"></div>
+		</form>
+
+	</body>
+</html>

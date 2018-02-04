@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>Memo</title>
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<style type="text/css">
+			body {
+				background-image: url(https://picsum.photos/2000/1000/?blur);
+			}
+
+			#today{
+				margin-left: 140px;
+				font-size: 25px;
+				font-family:  'Indie Flower', cursive;
+			}
+			#todaypic{
+				text-align: center;
+				margin-top: 50px;
+				margin-bottom: 100px;
+				
+			}
+			#todaypic img{
+				border-radius: 100%;
+				border:5px solid black;
+			}
+			#gotohome{
+				text-align: center;
+				line-height: 180px;
+			}
+			#gotobutton{
+				border:none;
+				width: 500px;
+				height: 100px;
+				font-size: 40px;
+				background:transparent;
+				font-family:  'Indie Flower', cursive;
+			}
+			#gotobutton:hover{
+				font-size: 60px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+		<div id="todaypic"><img id="userpic" src="https://picsum.photos/100/100"></div>
+		<form>
+			<input type="button" name="changepic" value="Change your pic"><br>
+			Update your signature<input type="text" name="signature" >
+			<textarea id="today" rows="4" cols="100" name="todaydiary">Write down your memories.</textarea><br>
+			<div id="gotohome"><input id="gotobutton" type="button" name="submit" value="publish to Dairy"></div>
+		</form>
+
+	</body>
+</html>
