@@ -4,18 +4,23 @@
 	<meta charset="UTF-8">
 		<title>Memo</title>
 		<link rel="stylesheet" type="text/css" href="Memo.css">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 	</head>
 	<style type="text/css">
+		#container{
+			width: 1600px;
+		}
 		#mainsite{
 			width: 1400px;
-			background-color: green;
 		}
 		#motto{
-			width: 700px;
-			height: 180px;
-			background-color: blue;
+			width: 660px;
+			height: 140px;
+			background-color: #33CCFF;
 			margin-left: 270px;
 			margin-top: 50px;
+			padding: 20px;
+		    font-family: 'Indie Flower', cursive;
 		}
 		#Now{
 			width: 700px;
@@ -23,6 +28,7 @@
 			line-height: 10px;
 			margin-left: 270px; 
 			border-bottom: 2px dashed gray;
+			font-family: 'Indie Flower', cursive;
 		}
 		.dairyblock{
 			margin-left: 270px;
@@ -37,35 +43,40 @@
 			margin-left: 655px;
 			color: blue;
 			margin-bottom: 5px;
+			font-family: 'Indie Flower', cursive;
 		}
 		.reply:hover{
 			background-color: blue;
 			color: white;
+			border-radius: 40px;
+			border:3px solid black;
 		}
 	</style>
 	<body>
+		<div id="container">
 		<div id="sidemenue">
 		</div> 
 		<div id="mainsite">
 			<div id="top">
 				<div id="login">
+					<form action="LoginServlet" method="POST" name="LoginForm">
 			<ul>
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
 					<ul>
-						<li><br></li>
 						<li>username:</li>
-						<li><input style="width: 80px;" type="text" name="username"></li>
+						<li><input style="width: 100px;" type="text" name="username"></li>
 						<li><br></li>
 						<li>password:</li>
-						<li><input style="width: 80px;" type="text" name="password"></li>
+						<li><input style="width: 100px;" type="text" name="password"></li>
 						<li><br></li>
 						<li><input id="loginbotton" type="submit" name="submit" value="login"></li>
-						<li><div style="border-bottom: 2px solid black"><br></div></li>
+						<li><div><br></div></li>
 					</ul>
 				</li>
 				<li><div class="signup"> Sign up</div></li>
 			</ul>
+		</form>
 		</div>
 			</div>
 			<div id="motto">
@@ -81,7 +92,7 @@
 			</div>	
 			
 		</div>
-		
+		</div>
 
 
 	</body>

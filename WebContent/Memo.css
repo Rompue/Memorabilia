@@ -6,7 +6,7 @@
 			#sidemenue{
 				width: 200px;
 				height: 700px;
-			    border-right: 2px solid black;
+			   
 			    margin-top: 20px;
 			    float: left;			    
 			}
@@ -14,7 +14,6 @@
  				float:right;
  				width: 380px;
  				height: 60px;
- 				border-bottom: 5px solid black;
  				padding-right: 20px;
  	 			}
  	 		#login ul{
@@ -33,9 +32,9 @@
  	 		#login ul li ul li{
  	 			width: 160px;
  	 			line-height: 20px;
- 	 			text-align: center;
- 	 			border-left: 2px solid black;
- 	 			border-right: 2px solid black;
+ 	 			text-align: left;
+ 	 			margin-left:20px;
+ 	 			font-family: 'Indie Flower', cursive;
  	 		}
  	 		#login ul li:hover li{
  	 			visibility: visible;
@@ -52,12 +51,15 @@
  	 		}
  	 		.signup{
  	 			width: 120px;
- 	 			height: 60px;
+ 	 			height: 80px;
  	 			text-align: center;
  	 			line-height: 60px;
+ 	 			font-size: 30px;
+ 	 			color: gray;
+ 	 			font-family: 'Indie Flower', cursive;
  	 		}
  	 		.signup:hover{
- 	 			background-color: green;
+ 	 			font-size: 50px;
  	 		}
  	 		#userpic{
  	 			border-radius: 100%;
@@ -66,12 +68,17 @@
  	 			margin-left: 30px;
  	 			margin-top: 5px;
  	 			}
+ 	 		#userpic:hover{
+ 	 			width: 50px;
+ 	 			height: 50px;
+ 	 		}
  	 		#loginbotton{
- 	 			width: 80px; 
+ 	 			width: 90px; 
  	 			height: 25px; 
  	 			font-size: 15px; 
  	 			border-radius: 30%;
  	 			background-color: yellow;
  	 			border: 3px solid black;
+ 	 			font-family: 'Indie Flower', cursive;
  	 			line-height: 15px;
  	 		}
