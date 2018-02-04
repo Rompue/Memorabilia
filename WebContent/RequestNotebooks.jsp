@@ -7,6 +7,10 @@
 <title>RequestNotebook</title>
 </head>
 <body>
-
+<% 
+		for(int i=0; i< notebooks.size();i++){
+			String name = notbooks.top().getname();		
+		}
+%>
 </body>
 </html>

@@ -60,6 +60,10 @@
 		<script type="text/javascript">
 			function dynimicoption(){
 				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST","RequestNotebooks.jsp",false);
+				xhttp.send();
+				document.getElementById("dynamicoption").innerHTML = xhttp.responseText;
+				return true;
 			}
 		</script>
 	</head>
