@@ -8,6 +8,7 @@ import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
@@ -172,8 +173,13 @@ public class MConnection {
 		// Retrieve user's basic info and create the user first
 		User user = null;
 		try {
-			preparedStatement = connection.prepareStatement("SELECT * FROM User WHERE idUesr=?;");
+			preparedStatement = connection.prepareStatement("SELECT * FROM User WHERE idUser=?;");
 			preparedStatement.setInt(1, id);
+			
+			if(debug) {
+				System.out.println(preparedStatement.toString());
+			}
+			
 			resultSet = preparedStatement.executeQuery();
 			
 			if (resultSet.next()) { // Found a user, now check if the password matches
@@ -202,12 +208,17 @@ public class MConnection {
 			}
 		}
 		
-		// fill in uesr's notebooks
+		// fill in user's notebooks
 		
 		if (user != null) {
 			try {
-				preparedStatement = connection.prepareStatement("SELECT * FROM Notebook WHERE User_idUesr=?;");
+				preparedStatement = connection.prepareStatement("SELECT * FROM Notebook WHERE User_idUser=?;");
 				preparedStatement.setInt(1, user.getIdUser());
+				
+				if(debug) {
+					System.out.println(preparedStatement.toString());
+				}
+				
 				resultSet = preparedStatement.executeQuery();
 				
 				while (resultSet.next()) { // Found a user, now check if the password matches
@@ -224,18 +235,29 @@ public class MConnection {
 						try {
 							PreparedStatement diaryPS = connection.prepareStatement("SELECT * FROM Diary WHERE Notebook_idNotebook=?;");
 							diaryPS.setInt(1, idNotebook);
+							
+							if(debug) {
+								System.out.println(diaryPS.toString());
+							}
+							
 							ResultSet diaryRS = diaryPS.executeQuery();
 							
 							while (diaryRS.next()) {
 								int idDiary = diaryRS.getInt("idDiary");
-								String content = resultSet.getString("content");
-								Date createTime = resultSet.getTime("createTime");
+								String content = diaryRS.getString("content");
+								Date createTime = diaryRS.getTime("createTime");
+						
 								
 								Diary diary = new Diary(idDiary, content, createTime, notebook, idNotebook);
 								
 								
 								PreparedStatement commentPS = connection.prepareStatement("SELECT * FROM Comment WHERE Diary_idDiary=?;");
 								commentPS.setInt(1, idDiary);
+								
+								if(debug) {
+									System.out.println(commentPS.toString());
+								}
+								
 								ResultSet commentRS = commentPS.executeQuery();
 								
 								while (commentRS.next()) {
