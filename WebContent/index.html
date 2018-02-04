@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+		function validate(){
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("post", "authenticate.jsp?username=" + document.loginform.username.value + "&password=" + document.loginform.password.value, false);
+			xhttp.send();
+			if(xhttp.responseText.trim().length > 0){
+				return false;
+			}
+			return true;
+			}
+		</script>
+</head>
+<body>
+  <form name = "loginform" class="loginform" method="post" action = "LoginServlet" onsubmit = "return validate();">
+            <label>Email: </label><br>
+            <input type="text" name="username"><br>
+            <label>Password: </label><br>
+            <input type="password" name="password">
+            <div id = "errorMessage"></div>
+            <br>
+            <div id="buttons">
+              <input type="submit" id="loginButton" name="loginbutton" value="Log in" onclick="return validate();">
+              <input type="button" id="signUpButton" name="signupbutton" value="Sign up">
+            </div>
+    </form>
+
+</body>
+</html>

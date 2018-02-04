@@ -9,20 +9,13 @@
 		<script type="text/javascript">
 			
 		function validatelogin(){
-				var xhttp = new XMLHttpRequest();
-	            xhttp.onreadystatechange = function() {
-	            	if (this.readyState == 4 && this.status == 200) {
-	            		if(xhttp.responseText.trim().length > 0){
-	    					console.log(xhttp.responseText);
-	    					document.getElementById("LoginError").innerHTML = xhttp.responseText;
-	    					return false;
-	    				}
-	            		return false;
-	            	}
-	            }
-	            xhttp.open("GET","authenticate.jsp?username="+ document.LoginForm.username.value
-						+ "&password="+ document.LoginForm.password.value, true);
-				xhttp.send();
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("post", "authenticate.jsp?username=" + document.loginform.username.value + "&password=" + document.loginform.password.value, false);
+			xhttp.send();
+			if(xhttp.responseText.trim().length > 0){
+				return false;
+			}
+			return true;
 			}
 		</script>
 	</head>
@@ -34,7 +27,7 @@
 		<div id="mainsite">
 			<div id="top">
 				<div id="login">
-					<form action="UserServlet" method="POST" name="LoginForm" onsubmit="false">
+					<form action="LoginServlet" method="POST" name="loginform" onsubmit="return validate()">
 			<ul>
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
