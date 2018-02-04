@@ -275,12 +275,8 @@ public class MConnection {
 	}
 	
 	
-	public static Notebook createNotebook(Notebook notebook) {
-		
-		
-		
-		
-		return null;
+	public static Notebook createNotebook(Notebook notebook) throws MException {
+		return createNotebook(notebook.getName(), notebook.getCreateDate(), notebook.getExpireDate(), notebook.getIsPublic(), notebook.getUser());	
 	}
 	
 	public static Notebook createNotebook(String name, Date createDate, Date expireDate,
@@ -291,6 +287,7 @@ public class MConnection {
 		if (expireDate == null) throw new MException(10, "Notebook expireDate cannot be empty.");
 		if (user == null) throw new MException(11, "Notebook must belong to a user.");
 		
+		Notebook newNotebook = null;
 		
 		// TODO: check duplicate by user and name(notebook name)
 		
@@ -309,7 +306,7 @@ public class MConnection {
 			if (resultSet.next()) {
 				int idNotebook = resultSet.getInt(1);
 				
-				Notebook newNotebook = new Notebook(idNotebook, name, createDate, expireDate, isPublic, user, user.getIdUser());
+				newNotebook = new Notebook(idNotebook, name, createDate, expireDate, isPublic, user, user.getIdUser());
 			}
 		} catch (SQLException sqle) {
 			System.out.println("sqle: " + sqle.getMessage());
@@ -322,10 +319,55 @@ public class MConnection {
 			}
 		}
 		
-		return null;
+		return newNotebook;
 	}
 	
 	
+	public static Diary createDiary(Diary diary) throws MException {
+		return createDiary(diary.getContent(), diary.getCreateTime(), diary.getNotebook());
+	}
+	
+	
+	public static Diary createDiary(String content, Date createTime, Notebook notebook) throws MException {
+		
+		// check null
+		if (content == null || content.trim().equals("")) throw new MException(12, "Dairy content cannot be empty.");
+		if (createTime == null) throw new MException(13, "Diary createTime cannot be empty.");
+		if (notebook == null) throw new MException(14, "Diary must belong to a notebook.");
+		
+		
+		// no need to chack duplicate
+		
+		// create new diary
+		
+		Diary newDiary = null;
+		try {
+			
+			preparedStatement = connection.prepareStatement("INSERT INTO Diary (content, createTime, Notebook_idNotebook) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, content);
+			preparedStatement.setObject(2, createTime.toInstant().atZone(ZoneId.of("America/Los_Angeles")).toLocalDateTime());
+			preparedStatement.setInt(3, notebook.getIdNotebook());
+			preparedStatement.executeUpdate();
+			resultSet = preparedStatement.getGeneratedKeys();
+			if (resultSet.next()) {
+				int idDiary = resultSet.getInt(1);
+				newDiary = new Diary(idDiary, content, createTime, notebook, notebook.getIdNotebook());
+
+			}
+		} catch (SQLException sqle) {
+			System.out.println("sqle: " + sqle.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (SQLException sqle) {
+				System.out.println("sqle closing stuff: " + sqle.getMessage());
+			}
+		}
+		
+		
+		return newDiary;
+	}
 	
 	
 }

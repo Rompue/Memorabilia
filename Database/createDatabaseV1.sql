@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Memorabilia`.`Diary` (
   `idDiary` INT NOT NULL AUTO_INCREMENT,
-  `filepath` VARCHAR(200) NOT NULL,
+  `filepath` VARCHAR(200) NULL,
   `content` LONGTEXT NOT NULL,
   `createTime` TIMESTAMP NOT NULL,
   `Notebook_idNotebook` INT NOT NULL,
@@ -82,6 +82,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Memorabilia`.`Comment` (
   `idComment` INT NOT NULL AUTO_INCREMENT,
   `content` TEXT NOT NULL,
+  `createDate` DATETIME NOT NULL,
   `User_idUser` INT NOT NULL,
   `Diary_idDiary` INT NOT NULL,
   PRIMARY KEY (`idComment`),

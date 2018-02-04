@@ -33,5 +33,8 @@ public class MException extends Exception {
  * 9, "Notebook createDate cannot be empty."
  * 10, "Notebook expireDate cannot be empty."
  * 11, "Notebook must belong to a user."
+ * 12, "Dairy content cannot be empty."
+ * 13, "Diary createTime cannot be empty."
+ * 14, "Diary must belong to a notebook."
  * 
  */

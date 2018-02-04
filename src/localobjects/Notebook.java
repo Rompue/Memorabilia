@@ -88,13 +88,13 @@ public class Notebook {
 	/**
 	 * @return the isPublic
 	 */
-	public boolean isPublic() {
+	public boolean getIsPublic() {
 		return isPublic;
 	}
 	/**
 	 * @param isPublic the isPublic to set
 	 */
-	public void setPublic(boolean isPublic) {
+	public void setIsPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
 	/**
