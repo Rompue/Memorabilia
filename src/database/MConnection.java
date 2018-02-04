@@ -9,8 +9,14 @@ import java.sql.SQLException;
 import java.time.ZoneId;
 import java.util.Date;
 
+import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
+import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
+
 import database.PasswordStorage.CannotPerformOperationException;
 import database.PasswordStorage.InvalidHashException;
+import localobjects.Comment;
+import localobjects.Diary;
+import localobjects.Notebook;
 import localobjects.User;
 
 
@@ -196,7 +202,67 @@ public class MConnection {
 		
 		// fill in uesr's notebooks
 		
-		
+		if (user != null) {
+			try {
+				preparedStatement = connection.prepareStatement("SELECT * FROM Notebook WHERE idUesr=?;");
+				preparedStatement.setInt(1, user.getIdUser());
+				resultSet = preparedStatement.executeQuery();
+				
+				while (resultSet.next()) { // Found a user, now check if the password matches
+						// Gets all necessary information and puts it in a user object
+						int idNotebook = resultSet.getInt("idNotebook");
+						String name = resultSet.getString("name");
+						boolean isPublic = resultSet.getBoolean("isPublic");
+						Date createDate = resultSet.getDate("createDate");
+						Date expireDate = resultSet.getDate("expireDate");
+						
+						Notebook notebook = new Notebook(idNotebook, name, createDate, expireDate, isPublic, user, user.getIdUser());
+						
+						// retrieve diaries and add into the current notebook
+						try {
+							PreparedStatement diaryPS = connection.prepareStatement("SELECT * FROM Diary WHERE idNotebook=?;");
+							diaryPS.setInt(1, idNotebook);
+							ResultSet diaryRS = diaryPS.executeQuery();
+							
+							while (diaryRS.next()) {
+								int idDiary = diaryRS.getInt("idDiary");
+								String content = resultSet.getString("content");
+								Date createTime = resultSet.getTime("createTime");
+								
+								Diary diary = new Diary(idDiary, content, createTime, notebook, idNotebook);
+								
+								
+								PreparedStatement commentPS = connection.prepareStatement("SELECT * FROM Comment WHERE idDiary=?;");
+								commentPS.setInt(1, idDiary);
+								ResultSet commentRS = commentPS.executeQuery();
+								
+								while (commentRS.next()) {
+									int idComment = commentRS.getInt("idComment");
+									String commentContent = commentRS.getString("content");
+									Date commentCreateDate = commentRS.getDate("createDate");
+									int idUser = commentRS.getInt("idUser");
+									
+									Comment comment = new Comment(idComment, commentContent, commentCreateDate, idUser, diary, idDiary);
+								}
+							}
+							
+						} catch (SQLException e) {
+							System.out.println("sqle: " + e.getMessage());
+						} 
+						
+						
+				}
+			} catch (SQLException sqle) {
+				System.out.println("sqle: " + sqle.getMessage());
+			} finally {
+				try {
+					if (resultSet != null) resultSet.close();
+					if (preparedStatement != null) preparedStatement.close();
+				} catch (SQLException sqle) {
+					System.out.println("sqle closing stuff: " + sqle.getMessage());
+				}
+			}
+		}
 		
 		
 		return null;

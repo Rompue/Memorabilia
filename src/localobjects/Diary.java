@@ -1,6 +1,10 @@
 package localobjects;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Diary {
 	private int idDiary;
@@ -9,10 +13,24 @@ public class Diary {
 	private Date createTime;
 	private Notebook notebook;
 	private int idNotebook;
+	private List<Comment> comments = new ArrayList<>();
+	private Map<Integer, Comment> commentMap = new HashMap<>();
 	
 	
-	public Diary() {
-		// TODO Auto-generated constructor stub
+	public Diary(int idDiary, String content, Date createTime, Notebook notebook, int idNotebook) {
+		this.idDiary = idDiary;
+		this.filepath = "no file";
+		this.content = content;
+		this.createTime= createTime;
+		this.notebook = notebook;
+		this.idNotebook = idNotebook;
+		
+		this.notebook.addDiary(this);
+	} 
+	
+	public void addComment(Comment comment) {
+		comments.add(comment);
+		commentMap.put(comment.getIdComment(), comment);
 	}
 
 

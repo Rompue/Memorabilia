@@ -1,16 +1,27 @@
 package localobjects;
 
+import java.util.Date;
+
 public class Comment {
 	private int idComment;
 	private String content;
+	private Date createDate;
 	private User user;
 	private int idUser;
 	private Diary diary;
 	private int idDiary;
 	
 	
-	public Comment() {
-		// TODO Auto-generated constructor stub
+	public Comment(int id, String content, Date createDate, int idUser, Diary diary, int idDiary) {
+		this.idComment = id;
+		this.content = content;
+		this.createDate = createDate;
+		this.idUser = idUser;
+		this.user = null;
+		this.idDiary = idDiary;
+		this.diary = diary;
+		
+		this.diary.addComment(this);
 	}
 
 
