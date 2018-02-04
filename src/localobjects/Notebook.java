@@ -2,7 +2,9 @@ package localobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Notebook {
 	
@@ -15,9 +17,24 @@ public class Notebook {
 	private int idUser;
 	
 	private List<Diary> diaries = new ArrayList<>();
+	private Map<Integer, Diary> diaryMap = new HashMap<>();
 	
-	public Notebook() {
-		// TODO Auto-generated constructor stub
+	public Notebook(int id, String name, Date createDate, Date expireDate, boolean isPublic,
+					User user, int idUser) {
+		this.idNotebook = id;
+		this.name = name;
+		this.createDate = createDate;
+		this.expireDate = expireDate;
+		this.isPublic = isPublic;
+		this.user = user;
+		this.idUser = idUser;
+		
+		this.user.addNotebook(this);
+	}
+	
+	public void addDiary(Diary diary) {
+		diaries.add(diary);
+		diaryMap.put(diary.getIdDiary(), diary);
 	}
 	
 	/**

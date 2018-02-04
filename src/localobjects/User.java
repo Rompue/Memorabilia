@@ -2,7 +2,9 @@ package localobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 	private int idUser;
@@ -13,6 +15,7 @@ public class User {
 	private Date joinTime;
 	private String intro;
 	private List<Notebook> notebooks = new ArrayList<>();
+	private Map<Integer, Notebook> notebookMap = new HashMap<>();
 
 	public User(int id, 
 			String username, 
@@ -27,6 +30,11 @@ public class User {
 		this.joinTime = joinTime;
 		this.intro = intro;
 		this.filepath = "no image"; // TODO: fix the filepath
+	}
+	
+	public void addNotebook(Notebook notebook) {
+		notebooks.add(notebook);
+		notebookMap.put(notebook.getIdNotebook(), notebook);
 	}
 
 	/**
