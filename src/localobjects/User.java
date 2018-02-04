@@ -9,10 +9,21 @@ public class User {
 	private String filepath;
 	private boolean alive;
 	private Date joinTime;
-	private String whatsup;
-	
-	public User() {
-		// TODO Auto-generated constructor stub
+	private String intro;
+
+	public User(int id, 
+			String username, 
+			String email, 
+			boolean alive, 
+			Date joinTime, 
+			String intro) {
+		this.idUser = id;
+		this.username = username;
+		this.email = email;
+		this.alive = alive;
+		this.joinTime = joinTime;
+		this.intro = intro;
+		this.filepath = "no image"; // TODO: fix the filepath
 	}
 
 	/**
@@ -23,7 +34,8 @@ public class User {
 	}
 
 	/**
-	 * @param idUser the idUser to set
+	 * @param idUser
+	 *            the idUser to set
 	 */
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
@@ -37,7 +49,8 @@ public class User {
 	}
 
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -51,7 +64,8 @@ public class User {
 	}
 
 	/**
-	 * @param filepath the filepath to set
+	 * @param filepath
+	 *            the filepath to set
 	 */
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
@@ -65,7 +79,8 @@ public class User {
 	}
 
 	/**
-	 * @param alive the alive to set
+	 * @param alive
+	 *            the alive to set
 	 */
 	public void setAlive(boolean alive) {
 		this.alive = alive;
@@ -79,24 +94,11 @@ public class User {
 	}
 
 	/**
-	 * @param joinTime the joinTime to set
+	 * @param joinTime
+	 *            the joinTime to set
 	 */
 	public void setJoinTime(Date joinTime) {
 		this.joinTime = joinTime;
-	}
-
-	/**
-	 * @return the whatsup
-	 */
-	public String getWhatsup() {
-		return whatsup;
-	}
-
-	/**
-	 * @param whatsup the whatsup to set
-	 */
-	public void setWhatsup(String whatsup) {
-		this.whatsup = whatsup;
 	}
 
 	/**
@@ -107,11 +109,26 @@ public class User {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	/**
+	 * @return the intro
+	 */
+	public String getIntro() {
+		return intro;
+	}
+
+	/**
+	 * @param intro
+	 *            the intro to set
+	 */
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
 }
