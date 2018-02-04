@@ -7,15 +7,18 @@
 		<link rel="stylesheet" type="text/css" href="NewDiary.css">
 		<script type="text/javascript">
 			function fillNotebookList(){
+				console.log("in function");
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST","RequestNotebooks.jsp",false);
 				xhttp.send();
 				document.getElementById("NotebookList").innerHTML = xhttp.responseText;
 			}
+
+			window.onload = fillNotebookList;
 		</script>
 	</head>
 
-	<body onload="fillNotebookList()">
+	<body>
 		<div id="container">
 		<div id="todaypic"><img id="userpic" src="https://picsum.photos/100/100"></div>
 		<form>

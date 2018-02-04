@@ -8,8 +8,13 @@
 	User user = (User)request.getSession().getAttribute("user");
 	MConnection.pullUserInfoByID(user.getIdUser());
 	List<Notebook> notebooks = user.getNotebooks();
-	String name = null;
+  if (MConnection.debug) {
+	System.out.println("in requestnotebooks " + user.getUsername());
+  }
 	for(Notebook notebook: notebooks){
+		if (MConnection.debug) {
+			System.out.println(notebook.getName());
+		  }
 %>
   <option><%= notebook.getName()%></option>
 <%
