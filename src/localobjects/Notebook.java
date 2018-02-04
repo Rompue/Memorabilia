@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import database.MConnection;
+
 public class Notebook {
 	
 	private int idNotebook;
@@ -30,6 +32,9 @@ public class Notebook {
 		this.idUser = idUser;
 		
 		this.user.addNotebook(this);
+		if (MConnection.debug) {
+			System.out.println("added one new notebook");
+		}
 	}
 	
 	public void addDiary(Diary diary) {

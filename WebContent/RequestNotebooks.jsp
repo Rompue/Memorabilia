@@ -7,11 +7,10 @@
 <%
 	User user = (User)request.getSession().getAttribute("user");
 	MConnection.pullUserInfoByID(user.getIdUser());
-	List<Notebook> notebooks = user.getNotebooks();
   if (MConnection.debug) {
-	System.out.println("in requestnotebooks " + user.getUsername());
+	System.out.println("in requestnotebooks " + user.getNotebooks().size());
   }
-	for(Notebook notebook: notebooks){
+	for(Notebook notebook: user.getNotebooks()){
 		if (MConnection.debug) {
 			System.out.println(notebook.getName());
 		  }

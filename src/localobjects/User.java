@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import database.MConnection;
+
 public class User {
 	private int idUser;
 	private String username;
@@ -35,6 +37,9 @@ public class User {
 	public void addNotebook(Notebook notebook) {
 		notebooks.add(notebook);
 		notebookMap.put(notebook.getIdNotebook(), notebook);
+		if(MConnection.debug) {
+			System.out.println("added one new notebook in user class");
+		}
 	}
 
 	/**
