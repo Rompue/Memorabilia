@@ -142,4 +142,32 @@ public class User {
 		this.intro = intro;
 	}
 
+	/**
+	 * @return the notebooks
+	 */
+	public List<Notebook> getNotebooks() {
+		return notebooks;
+	}
+
+	/**
+	 * @param notebooks the notebooks to set
+	 */
+	public void setNotebooks(List<Notebook> notebooks) {
+		this.notebooks = notebooks;
+	}
+
+	/**
+	 * @return the notebookMap
+	 */
+	public Map<Integer, Notebook> getNotebookMap() {
+		return notebookMap;
+	}
+
+	/**
+	 * @param notebookMap the notebookMap to set
+	 */
+	public void setNotebookMap(Map<Integer, Notebook> notebookMap) {
+		this.notebookMap = notebookMap;
+	}
+
 }
