@@ -1,6 +1,8 @@
 package localobjects;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Notebook {
 	
@@ -11,6 +13,8 @@ public class Notebook {
 	private boolean isPublic;
 	private User user;
 	private int idUser;
+	
+	private List<Diary> diaries = new ArrayList<>();
 	
 	public Notebook() {
 		// TODO Auto-generated constructor stub

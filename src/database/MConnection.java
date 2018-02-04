@@ -156,5 +156,50 @@ public class MConnection {
 		return null;
 	}
 	
+	public static User pullUserInfoByID(int id) throws MException {
+		
+		// Retrieve user's basic info and create the user first
+		User user = null;
+		try {
+			preparedStatement = connection.prepareStatement("SELECT * FROM User WHERE idUesr=?;");
+			preparedStatement.setInt(1, id);
+			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) { // Found a user, now check if the password matches
+					// Gets all necessary information and puts it in a user object
+					int idUser = resultSet.getInt("idUser");
+					String username = resultSet.getString("username");
+					String email = resultSet.getString("email");
+					boolean alive = resultSet.getBoolean("alive");
+					Date joinTime = resultSet.getDate("joinTime");
+					String intro = resultSet.getString("intro");
+					
+					
+					user = new User(idUser, username, email, alive, joinTime, intro);
+			}
+			else { // No user with this email exists
+				throw new MException(7, "No user with id " + id + " exists");
+			}
+		} catch (SQLException sqle) {
+			System.out.println("sqle: " + sqle.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (SQLException sqle) {
+				System.out.println("sqle closing stuff: " + sqle.getMessage());
+			}
+		}
+		
+		
+		return null;
+	}
+	
+	public static User fillCurrentUser() {
+		return null;
+	}
+	
+	
+	
 	
 }

@@ -28,5 +28,6 @@ public class MException extends Exception {
  * 4, "This email has already been registered."
  * 5, "Incorrect password for " + email
  * 6, "No user with email " + email + " exists"
+ * 7, "No user with id " + id + " exists"
  * 
  */

@@ -1,6 +1,8 @@
 package localobjects;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
 	private int idUser;
@@ -10,6 +12,7 @@ public class User {
 	private boolean alive;
 	private Date joinTime;
 	private String intro;
+	private List<Notebook> notebooks = new ArrayList<>();
 
 	public User(int id, 
 			String username, 
