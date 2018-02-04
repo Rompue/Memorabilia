@@ -17,8 +17,6 @@
 			#todaypic{
 				text-align: center;
 				margin-top: 50px;
-				margin-bottom: 100px;
-				
 			}
 			#todaypic img{
 				border-radius: 100%;
@@ -39,6 +37,25 @@
 			#gotobutton:hover{
 				font-size: 60px;
 			}
+			.setting{
+				height: 100px;
+				font-size: 30px;
+				font-family:  'Indie Flower', cursive;
+				text-align: center;
+			}
+			#changepic{
+				font-size: 30px;
+				font-family:  'Indie Flower', cursive;
+				height: 100px;
+				width: 300px;
+				border: none;
+				background:transparent;
+			}
+			#signature{
+				font-size: 30px;
+				width: 760px;
+				height: 50px;
+			}
 		</style>
 	</head>
 	
@@ -46,8 +63,8 @@
 		<div id="container">
 		<div id="todaypic"><img id="userpic" src="https://picsum.photos/100/100"></div>
 		<form>
-			<input type="button" name="changepic" value="Change your pic"><br>
-			Update your signature<input type="text" name="signature" >
+			<div class="setting"><input id="changepic" type="button" name="changepic" value="Change your pic"></div>
+			<div class="setting">Update your signature &emsp; <input id="signature" type="text" name="signature" ></div>
 			<textarea id="today" rows="4" cols="100" name="todaydiary">Write down your memories.</textarea><br>
 			<div id="gotohome"><input id="gotobutton" type="button" name="submit" value="publish to Dairy"></div>
 		</form>
