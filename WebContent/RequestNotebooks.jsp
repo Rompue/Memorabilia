@@ -8,5 +8,9 @@
 	User user = (User)request.getSession().getAttribute("user");
 	MConnection.pullUserInfoByID(user.getIdUser());
 	List<Notebook> notebooks = user.getNotebooks();
-	
+	String name = null;
+	for(Notebook notebook: notebooks){
+		name = notebook.getName();
+	}
 %>
+	<option><%= name %></option>
