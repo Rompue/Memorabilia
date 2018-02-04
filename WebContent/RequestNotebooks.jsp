@@ -8,8 +8,10 @@
 </head>
 <body>
 <% 
+		PrintWriter out = null;
 		for(int i=0; i< notebooks.size();i++){
-			String name = notbooks.top().getname();		
+			String name = notbooks.top().getname();
+		
 		}
 %>
 </body>
