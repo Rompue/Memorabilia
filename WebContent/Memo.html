@@ -5,24 +5,50 @@
 		<title>Memo</title>
 		<link rel="stylesheet" type="text/css" href="Memo.css">
 	</head>
+	<style type="text/css">
+		#mainsite{
+			width: 1400px;
+			background-color: green;
+		}
+		#motto{
+			width: 700px;
+			height: 180px;
+			background-color: blue;
+			margin-left: 270px;
+			margin-top: 50px;
+		}
+		#Now{
+			width: 700px;
+			font-size: 50px;
+			line-height: 10px;
+			margin-left: 270px; 
+			border-bottom: 2px dashed gray;
+		}
+		.dairyblock{
+			margin-left: 270px;
+			width: 700px;
+			padding-top: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px dashed gray;
+		}
+		.reply{
+			width: 45px;
+			text-align: center;
+			margin-left: 655px;
+			color: blue;
+			margin-bottom: 5px;
+		}
+		.reply:hover{
+			background-color: blue;
+			color: white;
+		}
+	</style>
 	<body>
 		<div id="sidemenue">
-		
 		</div> 
 		<div id="mainsite">
-			<div id="motto">
-				%
-				String motto
-				getAttribute(motto);
-				<h1>motto</h1>
-				%
-			</div>
-			<div>
-				Now
-			</div>	
-			
-		</div>
-		<div id="login">
+			<div id="top">
+				<div id="login">
 			<ul>
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
@@ -41,6 +67,21 @@
 				<li><div class="signup"> Sign up</div></li>
 			</ul>
 		</div>
+			</div>
+			<div id="motto">
+				String motto
+				getAttribute(motto);
+				<h1>motto</h1>
+			</div>
+			<div  id="Now">
+				<p style="margin-bottom: 30px;">Now</p>
+			</div>
+			<div class="dairyblock">
+				<div class="reply">Reply</div>
+			</div>	
+			
+		</div>
+		
 
 
 	</body>

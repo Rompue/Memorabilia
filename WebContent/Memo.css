@@ -1,4 +1,8 @@
 @charset "UTF-8";
+			#top{
+			width: 1400px;
+			height: 65px;
+			}
 			#sidemenue{
 				width: 200px;
 				height: 700px;
