@@ -130,6 +130,9 @@ public class MConnection {
 							return user;
 						}
 						else { // Email and password were incorrect
+							if (debug) {
+								System.out.println("wrong password");
+							}
 							throw new MException(5, "Incorrect password for " + email);
 						}
 					}

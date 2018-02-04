@@ -17,11 +17,11 @@
 	    					document.getElementById("LoginError").innerHTML = xhttp.responseText;
 	    					return false;
 	    				}
-	            		return true;
+	            		return false;
 	            	}
 	            }
-	            xhttp.open("GET","LoginServlet?username="+ document.LoginForm.username.value
-						+ "&password="+ document.LoginForm.password.value, false);
+	            xhttp.open("GET","authenticate.jsp?username="+ document.LoginForm.username.value
+						+ "&password="+ document.LoginForm.password.value, true);
 				xhttp.send();
 			}
 		</script>
@@ -34,7 +34,7 @@
 		<div id="mainsite">
 			<div id="top">
 				<div id="login">
-					<form action="UserServlet" method="POST" name="LoginForm" onsubmit="return validatelogin();">
+					<form action="UserServlet" method="POST" name="LoginForm" onsubmit="false">
 			<ul>
 				<li><img id="userpic" src="https://picsum.photos/40/40"></li>
 				<li><div class="signup">Login</div>
